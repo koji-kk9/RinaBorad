@@ -27,17 +27,24 @@ function getParameter(){
     return result;
 }
 	var espURL = "http://192.168.43.236/";
+	var debug = 0;
 
 	var parm = getParameter();
-		if(parm["esp"]!=undefined){
-			//alert("esp="+parm["esp"])
-			espURL = parm["esp"] ;
-			alert("SET esp="+espURL);
-		//	document.getElementById('esp').setAttribute("src",espURL);	
-		}
-	
+	if(parm["debug"]!=undefined){
+		//alert("esp="+parm["esp"])
+		debug = parm["debug"] ;
+		alert("SET debug="+debug);
+	//	document.getElementById('esp').setAttribute("src",espURL);	
+	}
+	if(parm["esp"]!=undefined){
+		//alert("esp="+parm["esp"])
+		espURL = parm["esp"] ;
+		if(debug==1)alert("SET esp="+espURL);
+	//	document.getElementById('esp').setAttribute("src",espURL);	
+	}
+
     function clickDisplayAlert(cmd) {
-    	//alert(espURL+cmd);
+    	if(debug==1)alert(espURL+cmd);
     	open( espURL+cmd, "CMD" ) ;
     }
 
@@ -128,31 +135,31 @@ Current Status
 <h2 style="color: #000; background: #ffff80;">「色」の変更</h2>
 	<div class="inline-block-top">
 	<h3 style="color: #000; background: #ff007d;">
-	<a target="CMD" style="color: #fff;" onclick="clickDisplayAlert('0')">ピンク(0)</a></h3>
+	<a target="CMD" style="color: #fff;" onclick="clickDisplayAlert('C0')">ピンク(0)</a></h3>
 	</div>
 	<div class="inline-block-top">
 	<h3 style="color: #000; background: #00ff00;">
-	<a target="CMD" style="color: #000;" onclick="clickDisplayAlert('1')">緑(1)</a></h3>
+	<a target="CMD" style="color: #000;" onclick="clickDisplayAlert('C1')">緑(1)</a></h3>
 	</div>
 	<div class="inline-block-top">
 	<h3 style="color: #000; background: #0000ff;">
-	<a target="CMD" style="color: #fff;" onclick="clickDisplayAlert('2')">青(2)</a></h3>
+	<a target="CMD" style="color: #fff;" onclick="clickDisplayAlert('C2')">青(2)</a></h3>
 	</div>
 	<div class="inline-block-top">
 	<h3 style="color: #000; background: #ff0000;">
-	<a target="CMD" style="color: #fff;" onclick="clickDisplayAlert('3')">赤(3)</a></h3>
+	<a target="CMD" style="color: #fff;" onclick="clickDisplayAlert('C3')">赤(3)</a></h3>
 	</div>
 	<div class="inline-block-top">
 	<h3 style="color: #000; background: #00ffff;">
-	<a target="CMD" style="color: #000;" onclick="clickDisplayAlert('4')">水色(4)</a></h3>
+	<a target="CMD" style="color: #000;" onclick="clickDisplayAlert('C4')">水色(4)</a></h3>
 	</div>
 	<div class="inline-block-top">
 	<h3 style="color: #000; background: #ffff00;">
-	<a target="CMD" style="color: #000;" onclick="clickDisplayAlert('5')">黄色(5)</a></h3>
+	<a target="CMD" style="color: #000;" onclick="clickDisplayAlert('C5')">黄色(5)</a></h3>
 	</div>
 	<div class="inline-block-top">
 	<h3 style="color: #000; background: #ffa500;">
-	<a target="CMD" style="color: #000;" onclick="clickDisplayAlert('6')">オレンジ(6)</a></h3>
+	<a target="CMD" style="color: #000;" onclick="clickDisplayAlert('C6')">オレンジ(6)</a></h3>
 	</div>
 </div>
 </section>	
