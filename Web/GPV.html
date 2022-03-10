@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>璃奈ちゃんボード☆コントローラー by コージ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="robots" content="noindex">
+<meta name="robots" content="nofollow">
+
+<link rel="stylesheet" href="style.css">
+<script>
+	//GETパラメータの処理
+function getParameter(){
+    var result = {};
+    if( 1 < window.location.search.length ) {
+		var query = window.location.search.substring( 1 );
+        var parameters = query.split( '&' );
+        for( var i = 0; i < parameters.length; i++ ) {
+            var element = parameters[ i ].split( '=' );
+            var paramName = decodeURIComponent( element[ 0 ] );
+            var paramValue = decodeURIComponent( element[ 1 ] );
+            result[ paramName ] = paramValue;
+        }
+    }
+    return result;
+}
+	var espURL = "http://192.168.43.236/";
+	var debug = 0;
+
+	var parm = getParameter();
+	if(parm["debug"]!=undefined){
+		//alert("esp="+parm["esp"])
+		debug = parm["debug"] ;
+		alert("SET debug="+debug);
+	//	document.getElementById('esp').setAttribute("src",espURL);	
+	}
+	if(parm["esp"]!=undefined){
+		//alert("esp="+parm["esp"])
+		espURL = parm["esp"] ;
+		if(debug==1)alert("SET esp="+espURL);
+	//	document.getElementById('esp').setAttribute("src",espURL);	
+	}
+
+    function sendToESP(cmd) {
+    	if(debug==1)alert(espURL+cmd);
+    	open( espURL+cmd, "CMD" ) ;
+    }
+
+	function sendPatternToESP(cmd) {
+		var text = document.getElementById(cmd).value;
+		if(debug==1)alert(cmd+"/"+text);
+    	open( espURL+cmd+"/"+text, "CMD" ) ; 
+    }
+</script>
+
+</head>
+
+<body>
+
+<div id="container">
+
+<header>
+<h1 id="logo">璃奈ちゃんボード☆コントローラー</h1>
+</header>
+
+<div id="contents">
+<section id="about">	
+Current Status
+<iframe id="esp" src="http://192.168.43.236/" width="300" height="60" name="CMD" scrolling="auto" frameborder="1">制御用のWiFiサーバの画面表示</iframe>
+</section>
+
+<section>
+<div class="inline-block-top">	
+<h2 style="color: #000; background: #ffff80;">「モード」設定</h2>
+<div class="inline-block-top">
+<h3 style="color: #000; background: #0000ff;">
+<a target="CMD" style="color: #fff;" onclick="sendToESP('A')">オート(all)</a></h3>
+</div>
+<div class="inline-block-top">
+	<h3 style="color: #000; background: #ff00dd;">
+	<a target="CMD" style="color: #fff;" onclick="sendToESP('R')">オート(璃奈ちゃん)</a></h3>
+</div>
+<div class="inline-block-top">
+<h3 style="color: #000; background: #ff8000;">
+<a target="CMD" style="color: #fff;" onclick="sendToESP('M')">手動</a></h3>
+</div>
+</div>
+</section>
+
+
+<section>
+<div class="inline-block-top">	
+<h2 style="color: #000; background: #ffff80;">「表情」設定</h2>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F0')"><img src="img/d0.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F1')"><img src="img/d1.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F2')"><img src="img/d2.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F3')"><img src="img/d3.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F4')"><img src="img/d4.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F5')"><img src="img/d5.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F6')"><img src="img/d6.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F7')"><img src="img/d7.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F8')"><img src="img/d8.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F9')"><img src="img/d9.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F10')"><img src="img/d10.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F11')"><img src="img/d11.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F12')"><img src="img/d12.png" width=50></a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('F13')"><img src="img/d13.png" width=50></a></h3>
+</div>
+</div>
+</section>
+
+
+<section>
+<div class="inline-block-top">	
+<h2 style="color: #000; background: #ffff80;">「色」の変更</h2>
+	<div class="inline-block-top">
+	<h3 style="color: #000; background: #ff007d;">
+	<a target="CMD" style="color: #fff;" onclick="sendToESP('C0')">ピンク(0)</a></h3>
+	</div>
+	<div class="inline-block-top">
+	<h3 style="color: #000; background: #00ff00;">
+	<a target="CMD" style="color: #000;" onclick="sendToESP('C1')">緑(1)</a></h3>
+	</div>
+	<div class="inline-block-top">
+	<h3 style="color: #000; background: #0000ff;">
+	<a target="CMD" style="color: #fff;" onclick="sendToESP('C2')">青(2)</a></h3>
+	</div>
+	<div class="inline-block-top">
+	<h3 style="color: #000; background: #ff0000;">
+	<a target="CMD" style="color: #fff;" onclick="sendToESP('C3')">赤(3)</a></h3>
+	</div>
+	<div class="inline-block-top">
+	<h3 style="color: #000; background: #00ffff;">
+	<a target="CMD" style="color: #000;" onclick="sendToESP('C4')">水色(4)</a></h3>
+	</div>
+	<div class="inline-block-top">
+	<h3 style="color: #000; background: #ffff00;">
+	<a target="CMD" style="color: #000;" onclick="sendToESP('C5')">黄色(5)</a></h3>
+	</div>
+	<div class="inline-block-top">
+	<h3 style="color: #000; background: #ffa500;">
+	<a target="CMD" style="color: #000;" onclick="sendToESP('C6')">オレンジ(6)</a></h3>
+	</div>
+</div>
+</section>	
+
+
+
+<section>
+<div class="inline-block-top">	
+<h2 style="color: #000; background: #ffff80;">「明るさ」設定</h2>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('S1')">1</a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('S2')">2</a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('S3')">3</a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('S4')">4</a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('S5')">5</a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('S6')">6</a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('S7')">7</a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('S8')">8</a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('S9')">9</a></h3>
+</div>
+<div class="inline-block-top">
+<h3><a target="CMD" onclick="sendToESP('S10')">10</a></h3>
+</div>
+
+</div>
+</section>
+
+<section>
+	<div class="inline-block-top">	
+		<h2 style="color: #000; background: #ffff80;">「追加パターン」設定</h2>
+		<button type="button" onclick="sendPatternToESP('P1')">P1</button><br>
+		<textarea id="P1" name="P1" rows="4" cols="64">HHHHHHHHBBBHHHHHHH9HBBBHHHH99HHHHHH9BBBBB0B0B9HHHHB0BBBBBB09HHHHHHHBBB7BBBBBBBBHB7BIIBBBIIBBBBHHHB0BBI00III00IBBBIA0000A000I7BBHBBB9I00A0000A0IBBI0A0000A00I09BHHBB9IA00000000IHHI00A00A000I7BBB44BBBI000AA00I444B6BIIIIII77BBB44B74B8008880BBB44438058000884B4B</textarea><br>
+		<button type="button" onclick="sendPatternToESP('P2')">P2</button><br>
+		<textarea id="P2" name="P2" rows="4" cols="64">HHHHJJJJJJJHHHHHHHHHJJ7JJJJJJHHHHHJ0JJJJJJJ0JHHHHHJJJJ0J0JJ0JJHHHJJJJJ8JJJJJJJHHHJJJ8J8JJ8J8JJJHHJJ88J88J8888JJHHJJ8899888888JJHHJJ8989889098JJHHHJ8899888988JHHHJJ8888888888JJHHJJ8K861688K87JJJJJJ888666887JJ44JJJ48838884JJJ44J4L0L8838L0LJ44400LLLL838LLL004</textarea><br>
+		<button type="button" onclick="sendPatternToESP('P3')">P3</button><br>
+		<textarea id="P3" name="P3" rows="4" cols="64">HHHHFFFFFFFFHHHHHHFF9FFFFFF9FFHHHHFJFFFF0FFFJFHHHHHF0FFFFFF0FHHHHFFFFF8FFFFFFFHHHFFFFF8FF8F8FFFHHFF8F88F888F8FFHHFF8888889988FFHHFF8909889898FHFHHF8898889988FHHHFF8888888888FHHHFF8K8B1B88K87FHFFFF888BBB887FF4FFFF48838884FFF44F4A0A8838H0AF4F4HHAAAA838AHAHHF</textarea><br>
+		<button type="button" onclick="sendPatternToESP('P4')">P4</button><br>
+		<textarea id="P4" name="P4" rows="4" cols="64">HHHHCCCCCCCHHHHHHHHHCC7CCCCCCHHHHHC0CCCCCCC0CHHHHHCCCC0C0CC0CCHHHCCCCCCCCCCCCCHHHCCCCC8CCCCCCCCHHCC8CC8C888C8CCHCCC8899889988CCHHCC8909889098CCCCCC8899889988CCHHCC8K888888K8CHCHHC88888888887HH444C16188288C4444400488221114444444003888800066446L600LLL3880044</textarea><br>
+	</div>
+</section>
+
+</div>
+<!--/contents-->
+
+<footer>
+<span class="pr">《<a href="https://template-party.com/" target="_blank">Web Design:Template-Party</a>》</span>
+</footer>
+
+</div>
+<!--/container-->
+
+</body>
+</html>
